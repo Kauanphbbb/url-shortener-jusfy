@@ -1,4 +1,3 @@
-import { LessThan, Raw } from "typeorm";
 import { UrlsRepository } from "../repositories/UrlsRepository";
 
 export class UrlsService {

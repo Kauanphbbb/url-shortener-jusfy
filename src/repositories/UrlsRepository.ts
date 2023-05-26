@@ -1,5 +1,4 @@
 import { Url } from "../entities/Url";
-import { database } from "../database/database.config";
 import { DataSource, Raw, Repository } from "typeorm";
 
 export class UrlsRepository extends Repository<Url> {
