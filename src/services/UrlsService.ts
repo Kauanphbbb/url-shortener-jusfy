@@ -1,14 +1,18 @@
 import { UrlsRepository } from "../repositories/UrlsRepository";
 
 export class UrlsService {
-  constructor(private urlsRepository: UrlsRepository) {}
+  constructor(private urlsRepository: UrlsRepository) { }
   async findByHash(hash: string) {
-    return await this.urlsRepository.findByHash(hash);
+    const url = await this.urlsRepository.findByHash(hash);
+
+    if (url && url.expiresAt < new Date()) return null
+
+    return url;
   }
   async saveUrl(url: string) {
     let hash = this.generateHash();
     const hashAlreadyExists = await this.urlsRepository.findOneBy({ hash });
-    
+
     while (hashAlreadyExists) {
       hash = this.generateHash();
     }

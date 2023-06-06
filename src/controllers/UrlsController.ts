@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UrlsService } from "../services/UrlsService";
 
 export class UrlsController {
-  constructor(private urlsService: UrlsService) {}
+  constructor(private urlsService: UrlsService) { }
 
   async findByHash(req: Request, res: Response) {
     const { hash } = req.params;

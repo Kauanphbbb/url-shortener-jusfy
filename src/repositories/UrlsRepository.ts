@@ -7,9 +7,6 @@ export class UrlsRepository extends Repository<Url> {
   }
 
   async findByHash(hash: string) {
-    return this.createQueryBuilder("url")
-      .where({ hash })
-      .andWhere(Raw((alias) => `${alias}.expiresAt > NOW()`))
-      .getOne();
+    return this.findOne({ where: { hash } })
   }
 }
